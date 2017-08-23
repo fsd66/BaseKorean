@@ -8,8 +8,13 @@ public class BaseKorean {
 	
 	public String convertToKorean(int n) {
 		LinkedList<Integer> digits = new LinkedList<Integer>();
-		int numberToConvert = n;
-		int memory = numberToConvert;
+		int memory = n;
+		boolean negative = memory < 0;
+		
+		if(negative) {
+			memory *= -1;
+		}
+		
 		int quotient = 0;
 		int remainder = 0;
 		
@@ -21,7 +26,7 @@ public class BaseKorean {
 			if(memory == 0) break;
 		}
 		
-		String output = "";
+		String output = (negative) ? "-" : "";
 		
 		for(Integer i : digits) {
 			output += (char) i.intValue();
